@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: qpon-core-service
+  ## MySql
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/qpon_core?createDatabaseIfNotExist=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:Dev@#$123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+server:
+  servlet:
+    contextPath: /qpon-core-service
+  port: ${PORT:8084}
+
+## Auth-service
+security:
+  oauth2:
+    resource:
+      token-info-uri: ${TOKEN_INFO_URI:http://localhost:8080/qpon-auth-service/oauth/check_token}
+      id: tokomobile
+    client:
+      client-id: ${CLIENT_ID:tokomobile}
+      client-secret: ${CLIENT_SECRET:1aead6ce-7199-4088-a64e-818244c5beff}
+auth:
+  baseUrl: ${AUTH_BASE_URL:http://localhost:8080/qpon-auth-service}
+  appKey: ${AUTH_APP_KEY:tokoin-auth-35b4aa84-d847-4dd2-99fa-6c6a4493dce0}
+  uri:
+    getUser: /api/v1/users
+    getBulkMerchantInfo: /api/v1/users/##TO-USER-TYPE##/bulk-info
+    getBulkUserInfo: /api/v1/users/bulk-info
+    getMerchantInfo: /api/v1/users/MERCHANT/business/merchant/##MERCHANT-ID##/APPROVED
+    getBankInfo: /api/v1/users/BANK/business/merchant/##BANK-ID##/APPROVED
+    getTodaySummary: /api/v1/summary/##TO-USER-TYPE##
+
+analytics:
+  propertyId: 289610618
+  topViewsCount: ${TOP_VIEWS_COUNT:10}
+util:
+  utilServiceAppKey: ${APP_KEY:ccus-c2cc3496-c9f8-4068-a83c-82841b44727b}
+  baseUrl: ${UTIL_BASE_URL:http://localhost:8085/qpon-util-service}
+  uri:
+    sendMail: /api/v1/email/send
+    sendSms: /api/v1/sms/send
+
+accessControl:
+  allowedOrigin: ${ALLOWED_ORIGIN:*}
+
+dealsOfTheDay:
+  limit: ${TOTAL_DEALS:10}
+
+dataUpdateScheduler:
+  size: 250
+  cron: 0 0 0 * * *
+
+  ## Generating-deal-code.
+  ## eg:-
+  ##bank_deal_code  : DLB-2202151204
+  ##merchant_deal_code  : DLM-2202151205
+dealCode:
+  dealCodeFormat: DL#-YYMMDD$$$$
