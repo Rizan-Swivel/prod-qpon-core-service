@@ -21,13 +21,13 @@ server:
 security:
   oauth2:
     resource:
-      token-info-uri: ${TOKEN_INFO_URI:http://localhost:8080/qpon-auth-service/oauth/check_token}
+      token-info-uri: ${TOKEN_INFO_URI:http://172.17.0.2:8080/qpon-auth-service/oauth/check_token}
       id: tokomobile
     client:
       client-id: ${CLIENT_ID:tokomobile}
       client-secret: ${CLIENT_SECRET:1aead6ce-7199-4088-a64e-818244c5beff}
 auth:
-  baseUrl: ${AUTH_BASE_URL:http://localhost:8080/qpon-auth-service}
+  baseUrl: ${AUTH_BASE_URL:http://172.17.0.2:8080/qpon-auth-service}
   appKey: ${AUTH_APP_KEY:tokoin-auth-35b4aa84-d847-4dd2-99fa-6c6a4493dce0}
   uri:
     getUser: /api/v1/users
