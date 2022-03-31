@@ -26,6 +26,10 @@ security:
     client:
       client-id: ${CLIENT_ID:tokomobile}
       client-secret: ${CLIENT_SECRET:1aead6ce-7199-4088-a64e-818244c5beff}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.17.0.5:8761/eureka
 auth:
   baseUrl: ${AUTH_BASE_URL:http://172.17.0.2:8080/qpon-auth-service}
   appKey: ${AUTH_APP_KEY:tokoin-auth-35b4aa84-d847-4dd2-99fa-6c6a4493dce0}
@@ -57,9 +61,5 @@ dataUpdateScheduler:
   size: 250
   cron: 0 0 0 * * *
 
-  ## Generating-deal-code.
-  ## eg:-
-  ##bank_deal_code  : DLB-2202151204
-  ##merchant_deal_code  : DLM-2202151205
 dealCode:
   dealCodeFormat: DL#-YYMMDD$$$$
