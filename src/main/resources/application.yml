@@ -21,7 +21,7 @@ server:
 security:
   oauth2:
     resource:
-      token-info-uri: ${TOKEN_INFO_URI:http://172.17.0.2:8080/qpon-auth-service/oauth/check_token}
+      token-info-uri: ${TOKEN_INFO_URI:http://127.0.0.1:8080/qpon-auth-service/oauth/check_token}
       id: tokomobile
     client:
       client-id: ${CLIENT_ID:tokomobile}
@@ -29,9 +29,9 @@ security:
 eureka:
   client:
     service-url:
-      defaultZone: http://172.17.0.5:8761/eureka
+      defaultZone: http://127.0.0.1:8761/eureka
 auth:
-  baseUrl: ${AUTH_BASE_URL:http://172.17.0.2:8080/qpon-auth-service}
+  baseUrl: ${AUTH_BASE_URL:http://127.0.0.1:8080/qpon-auth-service}
   appKey: ${AUTH_APP_KEY:tokoin-auth-35b4aa84-d847-4dd2-99fa-6c6a4493dce0}
   uri:
     getUser: /api/v1/users
@@ -46,7 +46,7 @@ analytics:
   topViewsCount: ${TOP_VIEWS_COUNT:10}
 util:
   utilServiceAppKey: ${APP_KEY:ccus-c2cc3496-c9f8-4068-a83c-82841b44727b}
-  baseUrl: ${UTIL_BASE_URL:http://localhost:8085/qpon-util-service}
+  baseUrl: ${UTIL_BASE_URL:http://127.0.0.1:8085/qpon-util-service}
   uri:
     sendMail: /api/v1/email/send
     sendSms: /api/v1/sms/send
